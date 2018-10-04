@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+  Sign up to get a new account with us. The perfect cushion store has a variety of stunning and comfy cushions.
+{% endblock %}
+{% block title %}
+  Create a New Account - Perfect Cushion Store
+{% endblock %}
+{% block content %}
+  <div>
+    {% if not form.is_valid %}
+      <div class="mx-auto">
+        <br>
+          <h1 class="my_title text-center">Create a new Account</h1>
+        <br>
+        <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+          <br>
+          <p>Enter the following information to create a new account.</p>
+          <form method="POST">
+            {% csrf_token %}
+            <p>{{ form | crispy }}</p>
+            <!-- <button type="submit" name="btn btn-secondary">Register Account</button> -->
+            <button type="submit" class="btn btn-outline-dark">Register Account</button>
+
+          </form>
+          <br>
+        </div>
+      </div>
+    {% else %}
+      <div class="mx-auto">
+        <br>
+        <h1 class="text-center">Thank you for signing up with us.</h1>
+        <br>
+        <div class="text-center bio-text">
+          <p> 
+            Your account has been created successfully. <br>        
+            Click <a href="{% url 'shop:all_products' %}">here</a> to view all available artwork.
+          </p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <br>
+{% endblock %}

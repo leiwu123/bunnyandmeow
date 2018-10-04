@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+Oil painting demos by Bunny and Meow Fine Art Studio.
+{% endblock %}
+
+{% block title %}
+Bunny and Meow - Oil Painting Demos
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 text-center">
+      <!-- <div class="text-center">
+                <p><a href="">Home</a> | <a href="">Animal</a> | best meow painting</p>
+              </div> -->
+
+      <h3 class="mb-4 mt-5 title-color"><b>Painting a Magical Hare</b></h3>
+
+      <div class="mb-5 embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/w33rx584tpQ?rel=0&amp;controls=0&amp;showinfo=0"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+      <h3 class="mb-4 mt-4 title-color"><b>Painting Sunny</b></h3>
+
+      <div class="mb-5 embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/lk_eOKO4N1Q?rel=0&amp;controls=0&amp;showinfo=0"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+      <h3 class="mb-4 mt-4 title-color"><b>Painting Lulu</b></h3>
+
+      <div class="mb-5 embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qmJYICuhdFI?rel=0&amp;showinfo=0"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="my-5">
+{% endblock %}

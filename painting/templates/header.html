@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-10">
+      <ul class="nav nav-text-color justify-content-end">
+        {% if request.user.is_authenticated %}
+        <li class="nav-link">
+          Welcome, <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username }} <i class="fas fa-user-circle"></i></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+          </div>
+        </li>
+        <li class="nav-link">
+          <a href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+       
+        {% else %}
+        <li class="nav-link">
+          <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+        </li>
+        <li class="nav-link">
+          <a href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+        </li>
+        {% endif %}
+      </ul>
+      <div class="text-center">
+        <img src="{% static 'img/logo1.jpg' %}" class="img-fluid mx-auto" alt="Responsive image">
+      </div>
+      <ul class="nav justify-content-center nav-text-color">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'painting:fine_art_home' %}">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'painting:about' %}">ARTIST</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ARTWORK</a>
+          <div class="dropdown-menu">
+            {% for cat in links %}
+            <a class="dropdown-item" href="{{cat.get_url}}">{{cat.name|upper}}</a>
+            {% endfor %}
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'painting:art_demos' %}">ART DEMOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop:all_products' %} ">AVAILABLE ART</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop:commission' %}">HOW TO COMMISSION</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact:contact' %}">CONTACT US</a>
+        </li>
+        {% if item_count > 0 %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>

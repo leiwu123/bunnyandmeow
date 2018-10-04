@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+  {% if category %}
+    {{ category.description|truncatewords:155 }}
+  {% else %}
+    Welcome to Bunny and Meow Fine Art Studio.
+  {% endif %}
+{% endblock %}
+
+{% block title %}
+  {% if category %}
+    {{ category.name }} - Bunny and Meow
+  {% else %}
+    Bunny and Meow - Original Oil Paintings
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5 container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <!-- <h5 class="my-4 title-color"><b>ANIMAL PAINTINGS</b></h5> -->
+        <div class="row justify-content-center">
+          {% for painting in paintings %}
+          <div class="mb-4 col-9 col-sm-12 col-md-4 col-md-12 col-lg-4 text-center">
+            <!-- <div class="card text-center" style="min-width:18rem;"> -->
+            {% if painting.image %}
+            <a href="{{ painting.image.url }}">
+              <img src="{{ painting.image.url }}" class="img-fluid mx-auto box-shadow mb-4" alt="Responsive image">
+            </a>
+            {% endif %}
+            <h6 class="title-color"><em><b>{{ painting.name|upper }}</b></em></h6>
+            <p>{{ painting.dimension }}</p>
+          </div>
+          {% endfor %}    
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

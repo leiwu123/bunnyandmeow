@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+Welcome to Bunny and Meow Fine Art Studio.
+{% endblock %}
+
+{% block title %}
+Bunny and Meow - Original Oil Paintings
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-7">
+      <div class="text-center">
+        <h2 class="mb-4">WELCOME!</h2>
+        <img src="{% static 'img/bunny.jpg' %}" class="img-fluid mx-auto box-shadow" alt="Responsive image">
+      </div>
+      <p class="mt-5 bio-text">Welcome to <b>Bunny & Meow</b>, an art studio established by artist Lei Wu in his hometown Weifang in 2015. You'll find on this website some of his original animal and portrait paintings as well as few seleted artworks that are for sale. If you would like to commission an animal or portrait painting from him please see more details <a href="{% url 'shop:commission' %}">here</a>.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="my-5">
+{% if products %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h4 class="mb-5 text-center title-color"><b>AVAILBLE ARTWORK</b></h4>
+      <div class="row justify-content-center">
+        {% for product in products %}
+        <div class="mb-4 col-9 col-sm-12 col-md-4 col-md-12 col-lg-4 text-center">
+          <!-- <div class="card text-center" style="min-width:18rem;"> -->
+          <a href="{{ product.get_url }}">
+            <img src="{{ product.image.url }}" class="img-fluid mx-auto box-shadow mb-4" alt="Responsive image">
+          </a>
+          <h6 class="title-color"><em><b>{{ product.name|upper }}</b></em></h6>
+          {% if product.subtitle %}
+          <p>{{ product.subtitle }}</p>
+          {% endif %}
+          <a href="{% url 'shop:product_detail' product.slug %}">
+            <p>Click here to find out more..</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <h5 class="text-right mt-3">Click <a href="{% url 'shop:all_products' %}"><em>here</em></a> to see more!</h5>
+    </div>
+
+  </div>
+</div>
+
+{% endif %}
+
+<hr class="my-5">
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 text-center">
+      <!-- <div class="text-center">
+              <p><a href="">Home</a> | <a href="">Animal</a> | best meow painting</p>
+            </div> -->
+
+      <h4 class="mb-5 mt-4 title-color"><b>CUSTOM ANIMAL PORTRAIT PAINTING DEMO</b></h4>
+
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="672" height="378" src="https://www.youtube.com/embed/qmJYICuhdFI?rel=0&amp;showinfo=0"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+
+      <h5 class="text-right mt-5">Click <a href="{% url 'painting:art_demos' %}"><em>here</em></a> to see more!</h5>
+    </div>
+  </div>
+</div>
+
+<hr class="my-5">
+<div class="container testimonial-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 text-center">
+
+      <div id="carouselExampleSlidesOnly" class="carousel slide text-center" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p class="bio-text"><em>Lei has such a wonderful talent for exactly capturing the character and
+                attitude of beloved pets, as
+                well as their physical uniqueness. I am really happy with this portrait of my little friend and will
+                treasure it deeply.</em></p>
+            <img src="{% static 'img/cg.jpg' %}" alt="lei" class="mt-3 testimonial-image" width="70">
+            <h4 class="mt-3 title-color bio-text">G Chassery</h4>
+          </div>
+          
+          <div class="carousel-item">
+            <p class="bio-text"><em>I've got the picture and it's hanging on the wall at home in my lounge and I'm
+                thrilled to bits
+                with it. It's very, very good and the likeness is incredible. In fact someone joked and said that it
+                looked
+                better than the real life version!!</em></p>
+            <img src="{% static 'img/miky.jpg' %}" alt="lei" class="mt-3 testimonial-image" width="70">
+            <h4 class="mt-3 title-color bio-text">Mike Brown</h4>
+          </div>
+
+          <div class="carousel-item">
+            <p class="bio-text"><em>A very touching and accurate portrait of a beloved cat who died recently, this will
+                make such a unique and treasured gift. Thank you for the very caring art and speedy delivery, I was
+                amazed at how fast and well Lei works, and am very impressed and pleased.</em></p>
+            <img src="{% static 'img/sheep.jpg' %}" alt="lei" class="mt-3 testimonial-image" width="70">
+            <h4 class="mt-3 title-color bio-text">Gaelle Bluewhale</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  {% endblock %}

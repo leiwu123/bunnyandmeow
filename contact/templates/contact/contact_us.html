@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block metadescription %}
+Oil painting demos by Bunny and Meow Fine Art Studio.
+{% endblock %}
+
+{% block title %}
+Bunny and Meow - Contact us
+{% endblock %}
+
+{% block content %}
+
+<div class="my-5 container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <h2 class="mb-4 title-color text-center">CONTACT THE ARTIST</h2>
+            <!-- <h5 class="mt-3 mb-4 text-center">Bunny & Meow Fine Art Studio - 0086 13285361809</h5> -->
+            <form method="post" action="{% url 'contact:contact' %}">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="id_name">Your name</label>
+                {{form.name}}
+              </div>
+
+              <div class="form-group">
+                <label for="id_from_email">Email address</label>
+                {{form.from_email}}
+              </div>
+
+              <div class="form-group">
+                <label for="id_message">Your message</label>
+                {{form.message}}
+              </div>
+
+              <input type="submit" value="Submit" class="btn btn-outline-dark">
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

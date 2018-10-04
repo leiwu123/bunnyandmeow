@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+    Welcome to Bunny and Meow Fine Art Shop.
+{% endblock %}
+
+{% block title %}
+    Bunny and Meow - Available Artwork
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5 container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <!-- <h4 class="mb-5 text-center title-color"><b>AVAILBLE ARTWORK</b></h4> -->
+          <div class="row justify-content-center">
+            {% for product in products %}
+            <div class="mb-5 col-9 col-sm-12 col-md-4 col-md-12 col-lg-4 text-center">
+              <!-- <div class="card text-center" style="min-width:18rem;"> -->
+              <a href="{{product.get_url}}">
+                <img src="{{product.image.url}}" class="img-fluid mx-auto box-shadow mb-4" alt="Responsive image">
+              </a>
+              <h6 class="title-color"><em><b>{{ product.name }}</b></em></h6>
+              {% if product.subtitle %}
+              <p>{{ product.subtitle }}</p>
+              {% endif %}
+              <p>£{{product.price}}</p>
+              <a href="{{product.get_url}}">Click here for more info
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+  
+        </div>
+      </div>
+{% endblock %}
